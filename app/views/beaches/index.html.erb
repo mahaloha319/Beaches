@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="contents">
+  <h5 class="index_p1">世界中に色々なビーチがありますが、実際どこがおすすめですか？</h5><br>
+  <h5 class="index_p1">国内、海外の素敵なビーチを投稿したり、探すことができるアプリです。</h5>
+<br>
+<h4>投稿されてるお薦めビーチ</h4>
+
+ <div class="row">
+  <% @result.each do |beach| %>
+      <div class="beach-index col-xs-12 col-sm-12 col-md-4"><%= link_to image_tag(beach.image), beach_path(beach.id), class: "image"  %>
+        <p><strong>Name: </strong><%= beach.name%></p>
+        <p><strong>Address: </strong><%= beach.address%></p>
+      </div><!--col締め--!>
+  <% end %>
+ </div>
+ 
+    <div>
+    <%= paginate @beaches %>
+    </div>
+    
+    <div>
+    <a class="btn btn-primary btn-sm" href="beaches/new" role="button">Back to Post</a>
+    </div>
+    
+  </div>
+</div>

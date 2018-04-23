@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BestBeaches</title>
+    <%= csrf_meta_tags %>
+　　<meta name="viewport" content="width=device-width"> <!--モバイルブラウザでのレイアウト制御する為の呪文。スマホサイトを作る際端末（デバイス = device）ごとの横幅（width）に合わせてねっていう意味--!>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><i class="fa fa-anchor "></i></a>
+      </div>
+      <div id="gnavi" class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <!--検索機能--!>
+            <div class="form-group navbar-form navbar-left">
+             <%= search_form_for @q do |f| %>  <!--url必要？なくても動いている--!>
+              <!-- orで複数フィールドを指定できる --!>
+              <%= f.search_field :name_or_address_cont, :placeholder => "Beach name or Address", :size => "18px", :class => "form-control" %>
+              <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %><i class="fa fa-search"></i>
+              <% end %>
+              <%= link_to 'clear', url_for, class: "btn btn-primary btn-sm" %>
+             <% end %>
+            </div>
+              <li><%= link_to "Post", new_beach_path %></li>
+              <li><%= link_to "List", beaches_path %></li>
+              <li><%= link_to "Like", like_path(current_user.id) %></li>
+              <li><%= link_to "Beach ranking", top5_beaches_path %></li>
+              <li><%= link_to "Log out", session_path(current_user.id), method: :delete %></li>
+            <div id="gnavi" class="collapse navbar-collapse navbar-right">
+          <% else %>
+            <li class="sign"><%= link_to "log in", new_session_path %></li>
+            <li class="sign"><%= link_to "sign up", new_user_path %></li>
+            
+          <% end %>          
+        </ul>
+      </div>
+    </div>
+  </nav> 
+  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    <%= yield %>
+    </body>
+    <footer>
+   　 © 2018 Best Beache
+  　</footer>
+  
+</html>

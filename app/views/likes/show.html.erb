@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="contents">
+    <div class="article">
+    <h3>あなたのLikeしたPage</h3>
+    <p>画像をクリックすると詳細を確認できます。</p>
+ 
+<% if @like_beaches.present? %>   
+ <div class="row">
+   <% @like_beaches.each do |t| %>
+      <div class="beach-index col-xs-12 col-sm-12 col-md-4"><%= link_to image_tag(t.image), beach_path(t.id), class: "image"  %>
+      <p><strong>Name: </strong><%= t.user.name %></p>
+      <p><strong>Address: </strong><%= t.address %></p>
+        
+        <div class="favolite_clear_btn">
+        <%= link_to 'お気に入り解除', like_path(beach_id: t.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+        </div>
+        
+        <%= link_to("/likes/#{t.id}/destroy", {method: "post"}) do %>
+        <span class="fa fa-heart fa-unlikebtn fa-2x"></span>
+        <% end %>  
+      </div><!--col締め--!>
+      
+   <% end %>
+<% end %> 
+ </div><!--row締め--!>
+   </div><!--article締め--!> 
+ 
+    <div>
+     <%= link_to 'Back to List', beaches_path, class: 'btn btn-primary btn-sm' %>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="contents">
+    <div class="article">
+      
+    <h3>Beach Ranking Top5</h3>
+    <br>
+
+<div class="row">
+<% @top5.each.with_index(1) do |f, i|%>
+<div class="ranking_fram">
+  <h2 class="ranking_label"><span class="label label-danger"><%= "No.#{i}" %></span></h2>
+  <div><%= link_to image_tag(f.image), beach_path(f.id), class: "image" %></div>
+  <div><strong>Beach name</strong></div>
+  <div><%= f.name %></div>
+  <div><strong>Beach address</strong></div>
+  <div><%= f.address %></div>
+  <div>Post date: <%= simple_time(f.created_at) %></div>
+  <span class="fa fa-heart-o fa-likebtn fa-2x"></span><p><%= f.like_users.count %> likes</p> 
+</div>   
+       
+<% end %>
+</div><!--row締め--!> 
+
+    </div><!--article締め--!>
+    
+    <a class="btn btn-primary btn-sm" href="beaches/new" role="button">Back to Post</a>
+   
+  </div>
+</div>

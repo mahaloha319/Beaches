@@ -1,0 +1,45 @@
+<body class="background">
+<%= form_with(model: @beach, local: true, url: choose_new_or_edit) do |form| %>
+<% if @beach.errors.any? %>
+    <div id="error_explanation">
+      <h3 class="error_msg_form"><%= @beach.errors.count %>件のエラーがあります。</h3>
+      <ul>
+
+      <% @beach.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="beach_name">
+    <%= form.label :name, id: :form_label %>
+  </div>
+  <div>
+    <%= form.text_field :name, id: :new_form, :size=>"30", :placeholder => " ラニカイビーチ, Lanikai beach, etc...  " %>
+  </div>
+  <div class="beach_name">
+    <%= form.label :address, id: :form_label %>
+  </div>
+  <div>
+    <%= form.text_field :address, id: :new_form, :size=>"30", :placeholder => " ハワイ, Hawaii, etc...  " %>
+  </div>
+  
+  <div class="field">
+  <%= form.label :image, id: :form_label %>
+  </div>
+  <div>
+  <%= form.file_field :image, id: :beach_image %>
+  <%= form.hidden_field :image_cache %> 
+  </div>
+  
+  <div class="beach_name">
+    <%= form.label :information, id: :form_label %>
+  </div>
+  <div>
+    <%= form.text_area :information, id: :information_form, :size => "40x5", :placeholder => "天国に一番近い島。。。  "  %>
+  </div>
+  <%= form.submit "create", :class=>"btn btn-primary btn-sm", id: :form_btn%>
+<% end %> 
+</body>
+

@@ -1,0 +1,21 @@
+<body class="background">
+
+<h3 class="login_form">Log in</h3>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+
+<div class="login_form">  
+  <%= f.email_field :email, id: :form, :size=>"30", :placeholder => "  email address"%>
+</div>
+
+<div class="login_form">
+  <%= f.password_field :password, id: :form, :size=>"30", :placeholder => "  password" %>
+</div>
+<br>
+<div class="login_form_btn">
+  <%= f.submit "Log in", :class=>"btn btn-primary btn-sm" %>
+</div>  
+<% end %>
+<br>
+<h4 class="login_form">アカウントをお持ちでない方は<a href="/users/new">Sign up</a>が必要です。</h4>
+
+</body>

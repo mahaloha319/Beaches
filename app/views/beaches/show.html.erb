@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="contents">
+      <div class="article">
+    　<h4><%= @beach.user.name %>さんのpost</h4> 
+  
+<div class="row">
+   <div class="col-xs-12 col-sm-12 col-md-2"></div><!--ダミーcol--!>
+   <div class="img-show col-xs-12 col-sm-12 col-md-4"><%= image_tag(@beach.image_url)%></div>
+   
+   <div class="explanation-show col-xs-12 col-sm-12 col-md-4">
+   <p><strong>Name: </strong><%= @beach.name%></p>
+   <p><strong>Address: </strong><%= @beach.address%></p> 
+   <p class="information"><%= @beach.information%></p> 
+   <p>date: <%= simple_time(@beach.created_at) %></p>
+ 
+ <% unless @beach.user == current_user %>
+    <% if @like.present? %>
+      <div>  
+      <%= link_to 'Liked', like_path(beach_id: @beach.id), method: :delete, class: 'btn btn-danger' %>
+      </div>
+      <%= link_to("/likes/#{@beach.id}/destroy", {method: "post"}) do %>
+      <span class="fa fa-heart fa-unlikebtn fa-2x"></span>
+      <% end %>
+    <% else %>
+      <div>
+      <%= link_to 'Like', likes_path(beach_id: @beach.id), method: :post, class: 'btn btn-primary' %>
+      </div>
+      <%= link_to("/likes/#{@beach.id}/create", {method: "post"}) do %>
+      <span class="fa fa-heart-o fa-likebtn fa-2x"></span>
+      <% end %>
+    <% end %>
+      <br>
+      <!-- 変数@likes_countを表示 -->
+      <%= @likes_count %> likes
+  
+ <% end %>
+
+    <% if @beach.user_id == current_user.id %>
+      <div class="edit_delete_btn">   
+      <%= link_to 'Edit', edit_beach_path(@beach.id) %> / 
+      <%= link_to 'Delete', beach_path(@beach.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %>
+      </div>
+    <% end %>
+   
+   </div><!--explanation-show締め--!>   
+  
+   <div class="col-xs-12 col-sm-12 col-md-2"></div><!--ダミーcol--!>
+</div><!--row締め--!>
+    </div><!--article締め--!>
+    
+     <div id="back_to_list">
+     <%= link_to 'Back to List', beaches_path, class: 'btn btn-primary btn-sm' %>
+     </div>
+     
+ </div>
+</div>
