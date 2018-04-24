@@ -15,16 +15,10 @@
  
  <% unless @beach.user == current_user %>
     <% if @like.present? %>
-      <div>  
-      <%= link_to 'Liked', like_path(beach_id: @beach.id), method: :delete, class: 'btn btn-danger' %>
-      </div>
       <%= link_to("/likes/#{@beach.id}/destroy", {method: "post"}) do %>
       <span class="fa fa-heart fa-unlikebtn fa-2x"></span>
       <% end %>
     <% else %>
-      <div>
-      <%= link_to 'Like', likes_path(beach_id: @beach.id), method: :post, class: 'btn btn-primary' %>
-      </div>
       <%= link_to("/likes/#{@beach.id}/create", {method: "post"}) do %>
       <span class="fa fa-heart-o fa-likebtn fa-2x"></span>
       <% end %>
