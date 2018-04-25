@@ -32,6 +32,12 @@ class BeachesController < ApplicationController
   def show
     @like = current_user.likes.find_by(beach_id: @beach.id)
     @likes_count = Like.where(beach_id: @beach.id).count
+    
+    @beach = Beach.find_by(id: params[:id])
+    @latitude = @beach.latitude
+    @longitude = @beach.longitude
+    @address = @beach.name + @beach.address 
+    
   end
   
   def top5
