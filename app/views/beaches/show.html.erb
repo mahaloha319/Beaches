@@ -42,28 +42,27 @@
    <div class="col-xs-12 col-sm-12 col-md-2"></div><!--ダミーcol--!>
 </div><!--row締め--!>
     
-
 <hr>
 
 <script type="text/javascript">
     function initMap() {
 
-        var test ={lat: <%= @latitude %>, lng: <%= @longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15, <!--ズームは0～18までで設定（数値大でより詳細に）--!>
-            center: test
+        var mappoint ={lat: <%= @latitude %>, lng: <%= @longitude %>};   <!--取得した緯度経度データを変数 mappointに代入--!>
+        var map = new google.maps.Map(document.getElementById('map'), {  <!--APIが用意しているgoogle.maps.Mapクラスをインスタンス化して地図作成--!>
+            zoom: 15, <!--ズームは0～18まで(1～21まで?)設定出来る。（数値大でより詳細に）--!>
+            center: mappoint  <!--center で地図中心部を指定。先ほど定義した変数 mappointを活用--!>
         });
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
 
-        var contentString = '指定場所：<%= @address %>'; <!--オンマウスで表示させる文言--!>
+        var contentString = '指定場所：<%= @address %>'; <!--マウスオンした際の表示内容--!>
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
 
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
+        var marker = new google.maps.Marker({  <!--マーカーのインスタンスを作成--!>
+            position:mappoint,
+            map: map,                          <!--マーカーを落とすマップのインスタンスを指定--!>
             title: contentString 
         });
 
@@ -73,7 +72,7 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key = [GOOGLE_API_KEY]&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key = ENV['GOOGLE_API_KEY']&callback=initMap" type="text/javascript">  <!--type="text/javascript"追記--!>
 </script>
 
 <p id="notice"><%= notice %></p>
@@ -86,7 +85,6 @@
     width: 300px;}
 </style>
 <div id="map"></div>
-
 
 </div><!--article締め--!>
     
