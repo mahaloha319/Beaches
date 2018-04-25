@@ -44,7 +44,7 @@
     
 <hr>
 
-<script type="text/javascript">
+<script>
     function initMap() {
 
         var mappoint ={lat: <%= @latitude %>, lng: <%= @longitude %>};   <!--取得した緯度経度データを変数 mappointに代入--!>
@@ -72,7 +72,7 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key = ENV['GOOGLE_API_KEY']&callback=initMap" type="text/javascript">  <!--type="text/javascript"追記--!>
+        src="https://maps.googleapis.com/maps/api/js?key = ENV['GOOGLE_API_KEY']&callback=initMap" type="text/javascript">
 </script>
 
 <p id="notice"><%= notice %></p>
