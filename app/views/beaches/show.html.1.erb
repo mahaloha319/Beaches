@@ -5,7 +5,7 @@
     　<h4><%= @beach.user.name %>さんのpost</h4> 
   
 <div class="row">
-   <div class="col-xs-12 col-sm-12 col-md-2"></div><!--ダミーcol--!>
+   <div class="col-xs-12 col-sm-12 col-md-2"></div>
    <div class="img-show col-xs-12 col-sm-12 col-md-4"><%= image_tag(@beach.image_url)%></div>
    
    <div class="explanation-show col-xs-12 col-sm-12 col-md-4">
@@ -25,7 +25,7 @@
       <% end %>
     <% end %>
       <br>
-      <!-- 変数@likes_countを表示 -->
+      <!-- 変数@likes_count表示 -->
       <%= @likes_count %> likes
   
  <% end %>
@@ -39,54 +39,45 @@
    
    </div><!--explanation-show締め--!>   
   
-   <div class="col-xs-12 col-sm-12 col-md-2"></div><!--ダミーcol--!>
+   <div class="col-xs-12 col-sm-12 col-md-2"></div>
 </div><!--row締め--!>
     
 <hr>
 
-<div id="map"></div>
-
-<script>
-    function initMap() {
-
-        var mappoint ={lat: <%= @latitude %>, lng: <%= @longitude %>};   
-        var map = new google.maps.Map(document.getElementById('map'), {  
-            zoom: 15, 
-            center: mappoint  
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '指定場所：<%= @address %>'; 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({  
-            position:mappoint,
-            map: map,                          
-            title: contentString 
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
+    <div id="map"></div>
+    
+    <script>
+    function initMap() { 
+    var mappoint = {lat: <%= @latitude %>, lng: <%= @longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: mappoint
+    });
+    
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+    
+    var contentString = '指定場所：<%= @address %>'; 
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+    
+    var marker = new google.maps.Marker({
+      position: mappoint,
+      map: map,
+      title: contentString
+    });
+    
     }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key = ENV['GOOGLE_API_KEY']&callback=initMap" type="text/javascript">
-</script>
-
-<p id="notice"><%= notice %></p>
-
+  </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<% ENV['GOOGLE_API_KEY'] %>&callback=initMap"  type="text/javascript"></script>
 
 <style type="text/css">
   #map { height: 300px;
     margin-left:auto;
     margin-right:auto;
-    width: 100%;}
+    width: 50%;}
 </style>
-
 
 </div><!--article締め--!>
     
