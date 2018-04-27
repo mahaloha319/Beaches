@@ -7,7 +7,7 @@ class BeachesController < ApplicationController
     @beaches = Beach.page(params[:page]).per(6).order('created_at DESC')
     @q = Beach.ransack(params[:q]) 
     @result = @q.result.page(params[:page]).per(6).order('created_at DESC') 
-   
+    
   end
   
   def new
@@ -36,7 +36,7 @@ class BeachesController < ApplicationController
     @beach = Beach.find_by(id: params[:id])
     @latitude = @beach.latitude
     @longitude = @beach.longitude
-    @address = @beach.name + @beach.address 
+    @address = @beach.name
     
   end
   
@@ -69,7 +69,6 @@ class BeachesController < ApplicationController
     render :new if @beach.invalid?
   end  
   
-    
   
   private
   def beach_params
