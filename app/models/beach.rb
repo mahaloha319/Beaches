@@ -8,5 +8,5 @@ class Beach < ApplicationRecord
   mount_uploader :image, ImageUploader
   paginates_per 10
   geocoded_by :name
-  after_validation :geocode
+  after_validation :geocode, if: :name_changed?
 end

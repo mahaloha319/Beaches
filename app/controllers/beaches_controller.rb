@@ -74,7 +74,7 @@ class BeachesController < ApplicationController
   private
   def beach_params
     if params[:beach]
-      params.require(:beach).permit(:name, :address, :information, :image)
+      params.require(:beach).permit(:name, :address, :information, :image, :latitude, :longitude)
     else false
     end
   end
