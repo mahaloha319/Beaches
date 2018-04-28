@@ -24,36 +24,6 @@
 <p class="topindex_p1">国内、海外の素敵なビーチ　あなたはどこでどんなことしてみたい？<br>
 お気に入りのビーチを紹介するアプリです。</p>
 
-<hr>
-<style>
-      #map {
-        width: 100%;
-        height: 400px;
-        background-color: grey;
-      }
-    </style>
-<h3>Test</h3>
-    <div id="map"></div>
-    <script>
-    function initMap() { 
-    
-    var tatebayashi = {lat: <%= @latitude %>, lng: <%= @longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: tatebayashi
-    });
-    
-    var marker = new google.maps.Marker({
-    position: tatebayashi,
-    map: map,
-    title:"関東ゴーヤの聖地 館林"
-  });
-    
-    }
-  </script>
-  
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpaL08O932cs9VWRgxjcW1gTWpnEhI7Q8&callback=initMap"  type="text/javascript"></script>
-
 </body>
     
   </div>

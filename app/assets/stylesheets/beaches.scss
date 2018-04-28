@@ -23,12 +23,12 @@ html {
   padding-bottom: 100px;
   margin-right: auto;
   margin-left : auto;
-  margin-bottom:40px;
-  width:100%;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 .article{
-  margin-bottom:100px;
+  margin-bottom: 100px;
 }
 
 /* スタイルの状態変化を「my-fade-in」という名前で定義 */
@@ -82,12 +82,12 @@ body {
 }
 
 .information{
-  text-align:left;
+  text-align: left;
   display: inline-block;
   border-radius: 5px;
   border: 1.5px solid lightblue;
   font-size: 15px;
-  padding:10px;
+  padding: 10px;
 }
 
 .image{
@@ -106,7 +106,7 @@ body {
 }
 
 h2.ranking_label{
-  margin-bottom:50px;
+  margin-bottom: 50px;
 }
 
 #beach_image{
@@ -119,26 +119,26 @@ h2.ranking_label{
     margin-top: 30px;
     margin-bottom: 5px;
     margin-left: auto;
-    padding-top:30px;
+    padding-top: 30px;
     color: #000;
     border: solid 1px lightgray;
-    background-color:#fff;
+    background-color: #fff;
 }
 
 .img-show {
   position: absolute;
-  padding-top:20px;
-  padding-bottom:20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border: solid 1px lightgray;
 }
 
 .edit_delete_btn{
-  font-size:15px;
-  margin-top:10px;
+  font-size: 15px;
+  margin-top: 10px;
 }
 
 .row{
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 h3.error_msg_form{
@@ -147,12 +147,12 @@ h3.error_msg_form{
 
 h3.new_post{
   color:#fff;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 h3.edit{
   color:#fff;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 #new_form{
@@ -166,24 +166,24 @@ h3.edit{
 }
 
 #form_label{
-  color:#fff;  
+  color: #fff;  
 }
 
 #beach_image{
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
 #form_btn{
-  margin-top:30px;
-  margin-bottom:30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #submit_btn{
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 .fa-unlikebtn{
-  color:#EE0000;
+  color: #EE0000;
 } 
 
 footer {
@@ -200,7 +200,7 @@ footer {
   display: inline-block;
   margin: 0 -.05em;
   color: rgba(0, 0, 0, .2);
-  font-size:60px;
+  font-size: 60px;
 }
 .loading span::after {
   position: absolute;

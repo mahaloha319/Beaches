@@ -7,6 +7,4 @@ class Beach < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
   mount_uploader :image, ImageUploader
   paginates_per 10
-  geocoded_by :name
-  after_validation :geocode
 end

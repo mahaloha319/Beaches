@@ -34,7 +34,7 @@
           <% if logged_in? %>
             <!--検索機能--!>
             <div class="form-group navbar-form navbar-left">
-             <%= search_form_for @q do |f| %>  <!--url必要？なくても動いている--!>
+             <%= search_form_for @q do |f| %>  
               <!-- orで複数フィールドを指定できる --!>
               <%= f.search_field :name_or_address_cont, :placeholder => "Beach name or Address", :size => "18px", :class => "form-control" %>
               <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %><i class="fa fa-search"></i>

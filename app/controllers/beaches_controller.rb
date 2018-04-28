@@ -19,25 +19,19 @@ class BeachesController < ApplicationController
   end 
   
   def create
-  @beach = Beach.new(beach_params)
-  @beach.user_id = current_user.id
-  @beach.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
-    if @beach.save
-      redirect_to beaches_path, notice:"post completed!"
-    else
-      render 'new'
-    end
+    @beach = Beach.new(beach_params)
+    @beach.user_id = current_user.id
+    @beach.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
+      if @beach.save
+        redirect_to beaches_path, notice:"post completed!"
+      else
+       render 'new'
+      end
   end 
   
   def show
     @like = current_user.likes.find_by(beach_id: @beach.id)
     @likes_count = Like.where(beach_id: @beach.id).count
-    
-    @beach = Beach.find_by(id: params[:id])
-    @latitude = @beach.latitude
-    @longitude = @beach.longitude
-    @address = @beach.name
-    
   end
   
   def top5
@@ -61,7 +55,7 @@ class BeachesController < ApplicationController
   end  
   
   def like
-     @like = current_user.likes.find_by(beach_id: params[:beach_id])
+    @like = current_user.likes.find_by(beach_id: params[:beach_id])
   end 
  
   def confirm
@@ -69,11 +63,10 @@ class BeachesController < ApplicationController
     render :new if @beach.invalid?
   end  
   
-  
   private
   def beach_params
     if params[:beach]
-      params.require(:beach).permit(:name, :address, :information, :image, :latitude, :longitude)
+      params.require(:beach).permit(:name, :address, :information, :image)
     else false
     end
   end
